@@ -7,9 +7,9 @@ url: 'https://junegu.shift4.org'
 baseurl: 
 
 # Title of the Site
-title: What A Theme
+title: JuneGu's Git Blog
 # Description of the Site
-description: A customizable Jekyll portfolio theme
+description: Git blogs created with Git pages
 # URL of Image of the Site
 site-image: /WhatATheme/assets/images/meta.jpg
 # Keywords of the Site
@@ -22,12 +22,12 @@ heroimage: https://images.pexels.com/photos/220444/pexels-photo-220444.jpeg?auto
 
 # Social Media and Contact
 # If you don't want to use any icon, you can leave them blank.
-email: thedevslot@gmail.com
+email: wjdwnsrn9021@gmail.com
 facebook_username: thedevslot
 twitter_username: thedevslot
 instagram_username: thedevslot
 linkedin_username: thedevslot
-github_username:  thedevslot
+github_username:  Deepjune
 youtube_channel_id: UCk_93NXYP-U_AOB5GfWlOow
 reddit_username: /
 behance_username: /
