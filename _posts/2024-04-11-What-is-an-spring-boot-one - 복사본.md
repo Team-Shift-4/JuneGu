@@ -129,7 +129,7 @@
 
 1. 뷰 템플릿 페이지 만들기
 2. 스프링 부트 프로젝트 사용 도구
-   <img src="../assets/images/dependencies.png" />
+   
    1. Mustache
       - Springboot 에서 공식으로 지원하는 템플릿 엔진, 수 많은 언어를 지원하는 가장 심플한 템플릿 엔진 Java에서 사용될 때는 서버 템플릿 엔진으로, Javascript에서 사용될 때는 클라이언트 템플릿 엔진으로 사용가능 하다
    2. H2 Database
@@ -138,6 +138,8 @@
       - Spring Web을 이용하면 웹을 더 편리하고 빠르게 만들 수 있으며 다양한 기능과 도구를 제공하여 개발자의 부담을 덜어주는 도구이다.
    4. Spring Data JPA
       - **JPA란** Java Persistence API의 약자이며 **자바의 ORM을 위한 표준 기술**로 Hibernate, Spring JPA, EcliplseLink 등 과 같은 구현체가 있고 이것의 표준 인터페이스가 JPA 이다.
+   
+   <img src="../assets/images/dependencies.png" />
 3. 컨트롤러 만들고 실행하기
 4. 모델 추가하기
 
@@ -201,6 +203,16 @@ server.servlet.encoding.force=true
 - 코드를 추가한 결과
 
 <img src="../assets/images/krfracturesolve.png" />
+
+
+
+##### 어노테이션(annotation)
+
+- 소스 코드에 추가해 사용하는 메타 데이터의 일종
+- 컴파일 및 실행 과정에서 코드를 어떻게 처리해야 할지 알려주는 추가정보
+- @ 기호를 붙여 사용
+
+
 
 ##### 모델 추가하기
 
