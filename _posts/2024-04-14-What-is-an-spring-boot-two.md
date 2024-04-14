@@ -6,7 +6,7 @@
 
 - <form> 태그에 실려 서버로 전송되는 데이터 이다
 
-<img src="../assets/images/formdata.png" />
+<img src="../assets/images/spring/formdata.png" />
 
 ##### DTO(Data Transfer Object)
 
@@ -14,7 +14,7 @@
 
 - 이 객체를 DTO(Data Transfer Object)라고 한다
 
-<img src="../assets/images/dto.png" />
+<img src="../assets/images/spring/dto.png" />
 
 ##### 폼 데이터를 DTO로 받기
 
@@ -95,11 +95,11 @@ public class ArticleForm {
 
 - localhost:8080/article/new
 
-<img src="../assets/images/new.png" />
+<img src="../assets/images/spring/new.png" />
 
 - ArticleForm{title:"딥준",content="안녕하세요"} 확인
 
-<img src="../assets/images/ArticleForm.png" />
+<img src="../assets/images/spring/ArticleForm.png" />
 
 ### DTO를 데이터베이스에 저장하기
 
@@ -118,7 +118,7 @@ public class ArticleForm {
 
 - MySQL, 오라클, MariaDB, H2 DB
 
-<img src="../assets/images/db.png" />
+<img src="../assets/images/spring/db.png" />
 
 ##### H2 DB
 
@@ -147,7 +147,7 @@ public class ArticleForm {
 - 실제 사용을 위해서는 추가로 ORM 프레임워크를 선택해야 한다
   - 하이버네이트
 
-<img src="../assets/images/jpa.png" />
+<img src="../assets/images/spring/jpa.png" />
 
 ##### ORM 프레임워크 하이버네이트(hibernate)
 
@@ -157,7 +157,7 @@ public class ArticleForm {
 - 내부적으로 JDBC API을 사용 한다
 - 목표 : 자바 객체를 통해 DB 종류에 상관 없이 DB를 자유롭게 사용하는 것
 
-<img src="../assets/images/hibernate2.png" />
+<img src="../assets/images/spring/hibernate2.png" />
 
 ##### JPA의 핵심 도구
 
@@ -282,7 +282,7 @@ public interface ArticleRepository extends CrudRepository<Article, Long> {
 - 단순한 CRUD 작업만 한다면 : CrudRepository 상속
 - CRUD 작업 + 페이지 처리 + 정렬 : JpaRepository 상속
 
-<img src="../assets/images/repository.png" />
+<img src="../assets/images/spring/repository.png" />
 
 - JpaRepository 메서드(CrrudRepository 코드 위 ctrl 클릭하여 세부 코드 확인이 가능 하다)
 
@@ -355,7 +355,7 @@ public class ArticleController {
 - UPDATE 문: 데이터 수정
 - DELETE 문: 데이터 삭제
 
-<img src="../assets/images/crud.png" />
+<img src="../assets/images/spring/crud.png" />
 
 ##### H2 DB 접속
 
@@ -368,13 +368,13 @@ spring.h2.console.enabled=true // 입력
 
 - 서버 재시작 -> localhost:8080/h2-console 접속
 
-<img src="../assets/images/h2.png" />
+<img src="../assets/images/spring/h2.png" />
 
-<img src="../assets/images/h2url.png" />
+<img src="../assets/images/spring/h2url.png" />
 
 - <span style="color:red">jdbc:h2:mem:15826473-e7bf-4a5f-9328-a094f1dba2ed</span> 해당 부분을 복사해서 JDBC URL에 붙여넣은 후 연결하면 접속 된다
 
-<img src="../assets/images/h2connect.png" />
+<img src="../assets/images/spring/h2connect.png" />
 
 ### 롬복
 
@@ -410,7 +410,7 @@ dependencies {
 - 입력 후 오른쪽 상단 새로고침(코끼리 모양, Load Gradle Change) 아이콘 클릭
 - 다운로드 완료 후 -> 오른쪽 [Gradle] 탭 확인
 
-<img src="../assets/images/dependencies2.png" />
+<img src="../assets/images/spring/dependencies2.png" />
 
 2. DTO 리팩터링하기
    - dto > ArticleForm.java 생성자 삭제하여 리팩터링
@@ -506,7 +506,7 @@ public class ArticleController {
 
 - 결과
 
-<img src="../assets/images/logging.png" />
+<img src="../assets/images/spring/logging.png" />
 
 
 

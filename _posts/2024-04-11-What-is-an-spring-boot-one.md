@@ -84,7 +84,7 @@
 
 #### MVC 패턴 이란?
 
-<img src="../assets/images/mvc.png" />
+<img src="../assets/images/spring/mvc.png" />
 
 > *MVC(모델-뷰-컨트롤러)는 사용자 인터페이스, 데이터 및 논리 제어를 구현하는데 널리 사용되는 소프트웨어 디자인 패턴이다. *
 >
@@ -102,7 +102,7 @@
 
 #### 뷰 템플릿
 
-<img src="../assets/images/view.png" />
+<img src="../assets/images/spring/view.png" />
 
 - 웹 페이지(View)를 하나의 틀(Template)로 만들고 여기에 변수를 삽입해 서로 다른 페이지로 보여 주는 기술 이다
 
@@ -139,7 +139,7 @@
    4. Spring Data JPA
       - **JPA란** Java Persistence API의 약자이며 **자바의 ORM을 위한 표준 기술**로 Hibernate, Spring JPA, EcliplseLink 등 과 같은 구현체가 있고 이것의 표준 인터페이스가 JPA 이다.
    
-   <img src="../assets/images/dependencies.png" />
+   <img src="../assets/images/spring/dependencies.png" />
 3. 컨트롤러 만들고 실행하기
 4. 모델 추가하기
 
@@ -188,7 +188,7 @@ public class FirstController(컨트롤러 이름) {
 
 - 서버 실행 localhost:8080/hi 에 접속 한다
 
-<img src="../assets/images/krfracture.png" />
+<img src="../assets/images/spring/krfracture.png" />
 
 **※** 실행 결과 한글 깨짐 현상 발생시
 
@@ -202,7 +202,7 @@ server.servlet.encoding.force=true
 
 - 코드를 추가한 결과
 
-<img src="../assets/images/krfracturesolve.png" />
+<img src="../assets/images/spring/krfracturesolve.png" />
 
 
 
@@ -230,7 +230,7 @@ public String hello(Model model) { // 모델 객체 가져오기
 </body>
 ```
 
-<img src="../assets/images/addAttribute.png" />
+<img src="../assets/images/spring/addAttribute.png" />
 
 
 
@@ -240,7 +240,7 @@ public String hello(Model model) { // 모델 객체 가져오기
 
 - 화면에 요소를 배치하는 일을 한다
 
-<img src="../assets/images/layout.png" />
+<img src="../assets/images/spring/layout.png" />
 
 ##### 헤더-푸터 레이아웃(header-footer layout)
 
@@ -248,7 +248,7 @@ public String hello(Model model) { // 모델 객체 가져오기
 - 푸터 : 사이트 정보 등 배치 한다
 - 헤더와 푸터 사이 : 사용자가 볼 핵심 내용(컨텐츠) 배치 한다
 
-<img src="../assets/images/header-footerlayout.png" />
+<img src="../assets/images/spring/header-footerlayout.png" />
 
 ##### /hi 페이지에 헤더-푸터 레이아웃 적용하기
 
@@ -314,4 +314,4 @@ public String hello(Model model) { // 모델 객체 가져오기
 
 - 적용 후 실행화면
 
-<img src="../assets/images/firstproject.png" />
+<img src="../assets/images/spring/firstproject.png" />
