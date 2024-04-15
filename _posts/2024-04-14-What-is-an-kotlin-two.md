@@ -175,17 +175,346 @@ val value2 = value!!
 ##### 기본 타입
 - 정수형 타입
 
+| Type  | Size(bits) | Min value                  | Max value                 |
+| ----- | ---------- | -------------------------- | ------------------------- |
+| Byte  | 8          | -128                       | 127                       |
+| Short | 16         | -32768                     | 32767                     |
+| Int   | 32         | -2,147,483,648             | 2,147,483,647             |
+| Long  | 64         | -9,223,372,036,854,775,808 | 9,223,372,036,854,775,807 |
+
+- 타입을 생략할 경우 할당하는 값이 정수 범위이면 자동으로 정수로 추론된다
+
+```kotlin
+val one = 1 // Int
+val threeBillion = 3000000000 // Long
+val oneLong = 1L
+val oneByte : Byte = 1
+```
+
+<br />
+
+- 실수형 타입
+
+| Type   | Size(bits) | Significant bits | Exponent bits | Decimal digits |
+| ------ | ---------- | ---------------- | ------------- | -------------- |
+| Float  | 32         | 24               | 8             | 6-7            |
+| Double | 64         | 53               | 11            | 15-16          |
+
+- 16진수 0x, 2진수 0b, 가독성을 높이기 위해 _를 중간에 넣을 수 있다
+
+```kotlin
+val oneMillion = 1_000_000
+val creditCardNumber = 1234_5678_9012_3456L
+val socialSecurityNumber = 999_99_9999L
+val hexBytes = 0xFF_EC_DE_5E
+val bytes = 0b11010010_01101001_10010100_10010010
+```
+
+<br />
+
+- Unsigned integers
+  - UByte : 8-bit, 0~255
+  - UShort : 16-bit, 0~65535
+  - UInt : 32-bit, 0~2^32-1
+  - ULong : 64-bit, 0~2^64-1
+
+```kotlin
+val b: UByte = 1u
+val s: UShort = 1u
+val l: ULong = 1u
+val a1 = 42u
+val a2 = 0xFFFF_FFFF_FFFFu
+```
+
+<br />
+
+- 형 변환 함수
+  - 숫자 타입 : 자동으로 형 변환 되지 않음. 함수를 통해 명시적으로 변환
+    - toByte() : Byte
+    - toShort() : Short
+    - toInt() : Int
+    - toLong() : Long
+    - toFloat() : Float
+    - toDouble() : Double
+- Error
+
+```kotlin
+val a = 1 // int
+val b:Long = a
+```
+
+->
+
+```kotlin
+val a = 1
+val b:Long = a.toLong()
+```
+
+<br />
+
+- Boolean
+  - true, false 값을 가지는 객체(=null 가능)
+
+```kotlin
+val myTrue = Boolean = true
+val myFalse: Boolean = false
+val boolNull: Boolean? = null
+
+println(myTrue || myFalse) // true
+println(myTrue && myFalse) // false
+println(!myTrue) // false
+```
+
+- Char
+  - 한 글자를 저장하는 타입. 작은 따옴표를 사용한다
+
+```kotlin
+val aChar: Char = 'a'
+```
+
+- String
+  - 문장을 저장하는 변수. 큰 따옴표를 선언한다
+  - 여러 줄 문장은 큰따옴표를 3개 적어 선언한다
+
+```kotlin
+val str = "abcd 123"
+
+val text = """
+	for (c in "foo")
+		print(c)
+"""
+```
+
+- String template
+  - $ 기호 또는 ${} 를 이용해 변수 값이 포함된 문자열을 만들 수 있다
+  - 변수와 템플릿 문자열 사이에 공백이 없다면 {}을 반드시 사용한다
+  - {} 에는 expression이 들어갈 수 있다
+
+```kotlin
+val i = 10
+println("i = $i")
+
+val s = "abc"
+println("$s.length is ${s.length}")
+```
+
+<br />
+
+#### Range & Progression
+
+- Range : 숫자의 범위를 의미하는 데이터 타입 1..2 또는 1.rangeTo(2)
+
+  - (1..4) 또는 l.rangeTo(4) -> 1 부터 4까지의 범위, 끝이 닫힌 범위 이다
+  - (1..<4) 또는 l.rangeUntil(4) -> 1부터 4미만까지의 범위. 끝이 열린 범위 이다
+
+  - 1.0..4.0 과 같이 Double/Float 타입도 가능하다
 
 
 
+- Range : 숫자의 범위를 의미하는 데이터 타입
+
+  - 정수 타입은 반복문에서 iteration 할 수 있다.
+
+    ```kotlin
+    for (i in 1..4) print(i)
+    ```
+
+  - downTo 연산자를 사용하면 역순으로 iteration 가능하다
+
+    ```kotlin
+    for (i in 4 downTo 1) print(i)
+    ```
+
+  - step 함수를 이용하여 간격을 정해 iteration 할 수 있다
+
+    ```kotlin
+    for(i in 0..8 step 2) print(i)
+    println() // 02468
+    for(i in 0..<8 step 2) print(i)
+    println() // 0246
+    for(i in 8 downTo 0 step 2) print(i)
+    println // 86420
+    ```
+
+- Progrssion : sequence of numbers, 정수형 타입(Int, Long, Char)을 대상으로한다
+
+- first, last, step 속성을 가진다
+
+  - Range 에 대해 iteration을 하는 것은 암시적으로 progression이 생성된 것
+
+  ```kotlin
+  for(i in 1..10) print(i)
+  // 12345678910
+  ```
+
+  - Prograssion은 iterable 하므로 filter, map 등의 Collection 함수들을 사용할 수 있다
+
+  ```kotlin
+  println((1..10).filter {it % 2 == 0})
+  // [2, 4, 6, 8, 10]
+  ```
+
+<br />
+
+#### 타입 체크
+
+- is 또는 !is 연산자를 이용한다
+
+```kotlin
+if(obj is String) {
+    print(obj.length)
+}
+
+if(obj !is String) {
+    print("Not a String")
+} else {
+    print(obj.length)
+}
+```
+
+- is 연산자를 사용한 경우 smart cast가 이루어진다
+
+```kotlin
+fun demo(x: Any) {
+    if(x is String) {
+        print(x.length)
+    }
+}
+```
 
 
 
+#### Type cast
+
+- as 연산자를 사용하며 cast가 불가능 한 경우 exception이 발생하므로 unsage cast 연산자라고 한다
+
+```kotlin
+val x: String = y as String
+```
+
+- cast 가 불가능할 경우 null을 반환하는 safe cast 연산자는 as? 이다
+
+```kotlin
+val x: String? = y as? String
+```
 
 
 
+# 함수의 기본
+
+#### 기본 문법
+
+- 함수는 fun 키워드를 이용해 정의한다
+- 함수의 return type은 파라미터 정의 뒤에 : 와 함께 적는다
+
+```kotlin
+fun sum(a: Int, b: Int): Int {
+	return a + b
+}
+```
+
+- 함수의 body로 expression을 사용할 수 있다
+
+```kotlin
+fun sum(a: Int, b: Int) = a + b
+```
+
+- 특별한 값을 반환하지 않는 경우 return type을 Unit로 정의하거나 생략할 수 있다
 
 
+
+#### 터미널 입력과 출력
+
+- 입력 함수
+  - readln():String
+- 출력 함수: 파라미터로 String 전달
+  - print(), println()
+
+
+
+#### 실습
+
+- 파라미터로 받은 정수의 부호를 바꾸어 반환하는 함수 inv 를 선언
+- main 함수에서는 사용자로부터 정수를 입력받은 다음 위 함수의 결과를 출력하라
+
+```kotlin
+fun inv(a: Int) : Int {
+    return -a
+}
+
+fun main() {
+    val a:Int = readln().toInt()
+    print(inv(a))
+}
+```
+
+```kotlin
+fun inv(a: Int) = -a
+
+fun main() {
+    val a:Int = readln().toInt()
+    print(inv(a))
+}
+```
+
+<img src="../assets/images/kotlin/readLineToInt.png" />
+
+<br />
+
+- 사용자로부터 이름 문자열을 입력받고 "Hello 이름"의 형식으로 출력하라
+
+```kotlin
+fun main() {
+    val name = readln()
+    println("Hello ${name}")
+}
+```
+
+<img src="../assets/images/kotlin/readLine.png" />
+
+<br />
+
+- 사용자로부터 정수를 입력받아 10을 곱한 뒤 출력하라
+
+```kotlin
+fun mul(number:Int) : Int {
+    return number * 10
+}
+
+fun main() {
+    val number = readln().toInt()
+    println(mul(number))
+}
+```
+
+<img src="../assets/images/kotlin/mulfun.png" />
+
+<br />
+
+#### Package and import
+
+- package 선언은 파일의 가장 위에 한다
+- import 구문을 이용해 다른 패키지를 불러 사용할 수 있다
+
+
+
+##### Java와 다른 점
+
+- package와 실제 폴더 구조가 달라도 된다
+- as 키워드를 이용해 package에 별칭을 부여할 수 있다
+
+```kotlin
+import org.example.Message // 메시지에 액세스 가능
+import org.test.Message as testMessage // testMessage는 'org.test.Message'의 약자입니다.
+```
+
+#### Package definition
+
+- 최상위(Top-level)에 선언된 변수, 함수들은 기본적으로 public
+  - private 으로 선언할 경우 같은 파일에서만 access 할 수 있다
+  - internal로 선언할 경우 같은 모듈(함께 컴파일되는 파일들)에서 access
+  - protected는 사용할 수 없다
+- 다른 패키지의 최상위 레벨 변수나 함수를 쓰려면 import 해야 한다
 
 
 
