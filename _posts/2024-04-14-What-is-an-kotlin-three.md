@@ -1,6 +1,6 @@
 # Conditions
 
-#### if
+### if
 
 - if( 조건문 ) { statements }
 - if( 조건문 ) { statements } else { statements }
@@ -181,10 +181,251 @@ when(x) {
 
 ```kotlin
 fun hasPrefix(x: Any) = when(x) {
-    is String -> x.startsWith("prefix")
+    is String -> x.startsWith("prefix") // prefix로 시작하는 문자열
     else -> false
 }
 ```
+
+<br />
+
+
+
+##### 실습
+
+- 사용자로부터 정수를 입력받아 다음과 같이 출력하라
+  - 점수 - 학점
+- 단, 사용자는 0부터 100 사이의 정수만을 입력한다고 가정한다
+  - 90 이상 100이하 : "A"
+  - 80 이상 90미만 : "B"  
+  - 70 이상 80미만 : "C"  
+  - 60 이상 70미만 : "D" 
+  - 0 이상 60 미만: "F"
+
+```kotlin
+fun main() {
+    print("점수를 입력 해주세요 : ")
+    val score = readln().toInt()
+    val grade = when(score) {
+        in 90..100 -> "A"
+        in 80..89 -> "B"
+        in 70..79 -> "C"
+        in 60..69 -> "D"
+        else -> "F"
+    }
+
+    print("학점은 $grade 입니다.")
+}
+```
+
+<img src="../assets/images/kotlin/grade.png" />
+
+### loops
+
+##### for
+
+- Iterator를 제공하는 데이터(주로 배열이나 리스트)에 대한 iteration 제공한다
+- foreach 의 동작과 유사하다
+
+```kotlin
+for (item in collection ) print(item)
+```
+
+```kotlin
+for(item: Int in ints) {
+	// ...
+}
+```
+
+- iteration된 아이템 말고 Index 도 사용하려면 다음 두 방법 중 하나를 사용
+
+```kotlin
+for (i in array.indices) { // 배열의 index 만을 대상으로 loop
+    println(array[i])
+}
+```
+
+```kotlin
+for ((index, value) in array.withIndex()) { // 배열의 index, value를 이용해 loop
+    println("the element at $index is $value")
+}
+```
+
+- 숫자를 이용한 반복을 위해서는 정수형 Range 를 사용한다
+
+```kotlin
+for (i in 1..3) {
+    print(i) // 123
+}
+for(i in 6 downTo 0 step 2){
+    print(i) // 6420
+}
+```
+
+```kotlin
+for(i in (1..4).reversed()) print(i) // 4321
+```
+
+<br />
+
+##### while
+
+- while과 do-while을 사용할수 있다
+
+```kotlin
+while(x > 0) {
+    x--
+} 
+
+do {
+    val y = retrieveData()
+}while(y != null) // y is visible here!
+```
+
+- do 블록에서 선언한 변수를 while에서 사용 가능
+
+<br />
+
+### Returns and jumps
+
+##### Jump expressions
+
+- 3개의 jump expressions
+  - return : 가장 가깝게 감싸고 있는 함수 (또는 익명 함수)를 반환
+  - break : 가장 가깝게 감싸고 있는 loop를 종료
+  - continue : 가장 가깝게 감싸고 있는 loop의 다음 단계로 진행.
+- Nothing Type
+  - jump expressions, throw의 타입
+
+##### break and continue
+
+- kotlin의 모든 expression은 라벨과 함께 표기될 수 있다
+  - 라벨은 이름@ 형태로 사용하며 문구 앞에 라벨을 먼저 적는다
+  - break와 continue는 적용될 위치를 라벨로 지정할 수 있다
+    - 단,이 경우 loop 문에 붙은 라벨만을 지정할 수 있다
+
+```kotlin
+loop@ for (i in 1..100) {
+    // ...
+}
+```
+
+```kotlin
+loop@ for(i in 1..100){
+    for(j in 1..100) {
+        if (...) break@loop
+    }
+}
+```
+
+##### return to label
+
+- 람다식의 경우 return 을 사용할 경우 람다식 외부의 함수가 반환된다
+
+```kotlin
+fun foo() {
+    listOf(1,2,3,4,5).forEach{
+        if(it == 3) return
+        print(it)
+    }
+    println("this point is unreachable")
+}
+```
+
+- 람다식만 return 하고 싶을 때는 라벨을 사용한다
+
+```kotlin
+fun foo() {
+    listOf(1,2,3,4,5).forEach lit@{
+        if(it == 3) return@lit
+        print(it)
+    }
+    print("done with explicit label")
+} // 명시적 라벨을 붙인 경우
+```
+
+```kotlin
+fun foo() {
+    listOf(1,2,3,4,5).forEach {
+        if(it == 3) return@forEach
+        print(it)
+    }
+    print("done with implicit label")
+} // 묵시적 라벨을 붙인 경우
+```
+
+- 라벨 없이 내부만 return 하고 싶다면 람다식 대신 익명 함수를 사용한다
+
+```kotlin
+fun foo() {
+    listOf(1,2,3,4,5).forEach(fun(value: Int) {
+        if(value == 3) return
+        print(value)
+    })
+    print("done with anonymous function")
+}
+```
+
+- 람다식의 중첩된 경우 라벨을 사용해 원하는 람다식을 return 할 수 있다
+
+```kotlin
+fun foo() {
+	run loop@{
+        listOf(1,2,3,4,5).forEach {
+            if(it == 3) return@loop
+            print(it)
+        }
+    }
+    print("done with nested loop")
+}
+```
+
+<br />
+
+##### 예외
+
+- Throwable 클래스를 상속받은 Exception 클래스를 사용한다
+
+- 발생 시키기
+
+  ```kotlin
+  throw Exception("Hi There!")
+  ```
+
+- 처리하기
+
+```kotlin
+try{
+    // some code
+} catch(e: SomeException) {
+    // handler
+} finally {
+    // optional finally block
+}
+```
+
+- try 문은 expression 으로 값을 반환한다
+
+```kotlin
+val a: Int? = try{ input.toInt() } catch(e: NumberFormatException){ null }
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
