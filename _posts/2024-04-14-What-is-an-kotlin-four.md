@@ -202,3 +202,185 @@ fun main() {
 - Position을 상속 가능하게 변경하고 이를 상속받은 TPosition 클래스를 정의한다
 - TPsition클래스는 정수형 z 변수를 추가로 가지며 Primary Constructor는 정수형 숫자 3개를 받는다
 - TPosition 클래스의 객체를 생성하라
+
+```kotlin
+open class Position(val x:Int, val y:Int) {
+    open val dimension = 2
+    constructor(value:Int):this(value, value)
+    open fun printValue() {
+        println("x: $x, y: $y")
+
+    }
+}
+
+class TPosition(x:Int, y:Int, val z:Int): Position(x,y){
+    override val dimension = 3
+    override fun printValue() {
+        println("x: $x, y: $y, z: $z")
+    }
+}
+
+fun main() {
+    val p =Position(10, 20)
+    p.printValue()
+    val p2 = Position(10)
+    p2.printValue()
+    val tp = TPosition(10, 20, 30)
+    tp.printValue()
+    val tp2 = TPosition(10, 20, 30)
+    tp2.printValue()
+}
+```
+
+<img src="../assets/images/kotlin/tposition.png" />
+
+##### 초기화 순서
+
+- 부모 클래스의 초기화가 먼저 이루어지고 자식 클래스가 초기화 된다
+- 부모 생성자의 할당 실행
+- -> 부모 생성자의 init 실행
+- -> 부모의 나머지 초기화 코드 실행
+- -> 자식 클래스의 초기화 실행
+
+
+
+##### Abstract classes
+
+- 일부 멤버 또는 전체 멤버가 abscract 일 때, 클래스가 abstract로 선언 된다
+  - abstract 멤버는 open 키워드를 사용하지 않아도 된다
+
+```kotlin
+abstract class Polygon{
+    abstract fun draw()
+}
+
+class Rectangle : Polygon() {
+    override fun draw() {
+        // draw the rectangle
+    }
+}
+```
+
+- 추상 함수가 아닌 일반 함수를 포함할 수 있으며 일반함수는 필요에 따라 open 할 수 있다
+
+#### Properties
+
+- Read-only, mutable한 경우 맞게 val, var로 선언한다
+  - Property들은 모두 constructor에서 할당 되어야 한다
+  - 그래서 val의 경우 read-only라 생각해도 된다
+  - 초기화를 통해 타입을 추론할 수 있게 하거나 타입을 정해줘야 한다
+
+```kotlin
+class Hello{
+    val a = 0
+    var b:Int? = null
+}
+```
+
+```kotlin
+class Hello {
+    val a = 0
+    var b:Int?
+    init{ b = 1 }
+}
+```
+
+- Error
+
+```kotlin
+class Hello{
+    val a = 0
+    var b:Int?
+}
+```
+
+<br />
+
+##### Getter/Setter
+
+- 각 Property는 getter와 setter를 가질 수 있다
+
+```kotlin
+var <propertyName>[: <PropertyType>] [= <property_initializer>]
+	[<getter>]
+	[<setter>]
+```
+
+- 생략할 경우 기본 getter/setter가 제공된다
+- val 은 getter 만 제공된다
+
+```kotlin
+class Test(var value:Int)
+```
+
+->
+
+```kotlin
+public final class Test {
+    private int value;
+    
+    public final int getValue() {
+        return this.value;
+    }
+    public final void setValue(int var1){
+        this.value = var1;
+    }
+    public Test(int value){
+        this.value = value;
+    }
+}
+```
+
+- 자바 라이브러리의 호환성 등을 위해 getter/setter 함수를 사용하지 않으려면
+  - property에 @JvmField 어노테이션을 추가한다
+
+```kotlin
+class Test(@JvmField var value:Int)
+```
+
+->
+
+```kotlin
+public final class Test{
+    @JvmField
+    public int value;
+    
+    public Test(int value){
+        this.value = value;
+    }
+}
+```
+
+- var의 경우 getter, setter를, val은 getter를 별도로 구현할 수 있다
+
+```kotlin
+class Rectangle(val width: Int, val height: Int){
+	val area: Int
+    	get() + THIS>WIDTH * this.height
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
