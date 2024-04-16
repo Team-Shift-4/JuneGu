@@ -277,6 +277,16 @@ val sum = { x: Int, y: Int -> x + y }
 
 - 람다식이 함수의 마지막 파라미터인 경우 파라미터 바깥에 선언할 수 있다
 
+```kotlin
+val product = items.fold(1) { acc, e -> acc * e }
+```
+
+- 람다식이 유일한 파라미터인 경우 ()를 생략할 수 있다
+
+```kotlin
+run { println("...") }
+```
+
 
 
 
