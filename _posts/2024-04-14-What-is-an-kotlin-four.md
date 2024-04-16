@@ -360,6 +360,14 @@ class Rectangle(val width: Int, val height: Int){
 }
 ```
 
+```kotlin
+val stringRepresentation: String
+	get() = this.toString()
+	set(value) {
+        setDataFromString(value)
+    }
+```
+
 
 
 
