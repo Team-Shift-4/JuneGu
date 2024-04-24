@@ -6,12 +6,6 @@
 
 <br />
 
-😇 **자세한 코드**
-
-https://colab.research.google.com/drive/1mPTpZ3Am7N7OJUFlxTkjQlLR02z8Bpix#scrollTo=fWXniSFWbnAp
-
-<br />
-
 ### 생선 분류 문제를 통해 머신 러닝을 이해 해보자!
 
 🤨 중요한 코드만을 위주로 다룹니다.
@@ -131,12 +125,6 @@ array([1])
 
 # 2주차 2번째 수업
 
-😇 **자세한 코드**
-
-https://colab.research.google.com/drive/1mPTpZ3Am7N7OJUFlxTkjQlLR02z8Bpix#scrollTo=fWXniSFWbnAp
-
-<br />
-
 - 위 실습의 문제점
   - **문제와 정답을 전부 알려주고 시험**을 치는 방법
   - 평가를 제대로 하려면 **훈련 데이터**와 **평가에 사용할 데이터**가 각각 **달라야  함**
@@ -239,7 +227,7 @@ plt.ylabel('weight')
 plt.show()
 ```
 
-<img src="../assets/images/machinelearning/sample1.png" />
+<img src="../assets/images/learn/2-1.png" />
 
 그 후, 훈련 데이터와 테스트 데이터를 넣어 모델을 테스트 해 보면 정상적인 결과가 나오게 된다.
 
