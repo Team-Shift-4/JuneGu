@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-=======
-# 머신러닝(3주차)
+# K최근접 알고리즘
 
 >>>>>>> 48720f402805ae5466af7e330e4748e10d8d6dfd
 🤨 **문제에 대한 설명**
@@ -38,7 +36,7 @@ np.column_stack((list01, list02))
 ```
 
 - ones()함수, zeros()함수
-=======
+	=======
 			  [2, 4],
 		      [3, 5]])
 ```
@@ -63,8 +61,6 @@ print(zero_list)
 - concatenate함수
 =======
 concatenate함수
->>>>>>> 48720f402805ae5466af7e330e4748e10d8d6dfd
-
 >numpy.concatenate() 함수는 NumPy 라이브러리에서 제공되는 배열을 연결(결합)하는 함수이다. 이 함수를 사용하여 여러 배열을 하나의 배열로 결합할 수 있으며. concatenate() 함수는 주어진 축(axis)을 기준으로 배열을 연결할 수 있다.
 
 ```python
@@ -73,19 +69,15 @@ np.concatenate((one_list,zero_list))
 // 결과 array([1., 1., 1., 1., 1., 0., 0., 0., 0., 0.])
 ```
 
-<<<<<<< HEAD
 - train_test_split()함수
 
 >train_test_split() 함수는 사이킷런(Scikit-learn) 라이브러리에서 제공되는 함수로, 데이터셋을 훈련 데이터와 테스트 데이터로 무작위로 분할하는 역할을 하며, 이 함수를 사용하면 기존 데이터를 훈련에 사용할 부분과 모델을 평가하는데 사용할 부분으로 나눌 수 있다.
 
 <br />
-
-=======
 train_test_split()함수
 
 >train_test_split() 함수는 사이킷런(Scikit-learn) 라이브러리에서 제공되는 함수로, 데이터셋을 훈련 데이터와 테스트 데이터로 무작위로 분할하는 역할을 하며, 이 함수를 사용하면 기존 데이터를 훈련에 사용할 부분과 모델을 평가하는데 사용할 부분으로 나눌 수 있다.
 
->>>>>>> 48720f402805ae5466af7e330e4748e10d8d6dfd
 ## 사전 지식을 바탕으로 학습 데이터를 구성해보자!
 
 먼저 생선 데이터를 준비한다.
@@ -169,6 +161,8 @@ print(test_target)
 빙어 데이터(0)가 하나 더 늘어난 모습
 ```
 
+
+
 ## 수상한 도미에 대해 분석해보자
 
 앞에서 준비한 데이터를 바탕으로 **k-최근접 이웃을 훈련**해보자
@@ -206,11 +200,7 @@ plt.ylabel('weight')
 plt.show()
 ```
 
-<<<<<<< HEAD
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a0a78814-f7bb-4b36-9830-783eb29a8930/23e182e5-79f9-4aa9-acff-f14ef8f03842/Untitled.png)
-=======
 <img src="../assets/images/learn/3-1.png" />
->>>>>>> 48720f402805ae5466af7e330e4748e10d8d6dfd
 
 산점도로 보았을 땐 다른 도미 데이터와 더 가깝다. 왜 이 모델은 왼쪽 아래 낮게 깔린 빙어 데이터에 가깝다고 판단한 걸까? kneighbor() 메서드를 활용하여 근접 데이터를 다시 확인해보자
 
@@ -241,13 +231,9 @@ plt.ylabel('weight')
 plt.show()rl
 ```
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a0a78814-f7bb-4b36-9830-783eb29a8930/e2f84b13-be3a-4c22-afe1-9fa9757dd411/Untitled.png)
-=======
-plt.show()
 ```
 
 <img src="../assets/images/learn/3-2.png" />
->>>>>>> 48720f402805ae5466af7e330e4748e10d8d6dfd
 
 길이가 25cm, 무게가 150g인 생선에  가장 가까운 이웃에는 빙어가 압도적으로 많다. 따라서 이 샘플의 클래스를 빙어로 예측하는 것은 무리가 아니다. 왜 가장 가까운 이웃을 빙어라고 생각할까?
 
@@ -262,6 +248,7 @@ print(indexes)
 # 결과 
 [[ 92.00086956 130.48375378 130.73859415 138.32150953 138.39320793]]
 [[21 33 19 30  1]]
+
 ```
 
 산점도를 다시 천천히 살펴보면 삼각형 샘플에 가장 가까운 첫 번째 샘플까지의 거리는 92이고, 그 외 가장 가까운 샘플들은 모두 130, 138이다. 그런데 **거리가 92와 130이라고 했을 때 그래프에 나타난 거리 비율**이 이상하다.
@@ -286,12 +273,7 @@ plt.xlabel('length')
 plt.ylabel('weight')
 plt.show()
 ```
-
-<<<<<<< HEAD
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a0a78814-f7bb-4b36-9830-783eb29a8930/c1dbec4d-8e3a-4f6f-a8ea-59f2d0e46e2c/Untitled.png)
-=======
 <img src="../assets/images/learn/3-3.png" />
->>>>>>> 48720f402805ae5466af7e330e4748e10d8d6dfd
 
 ## 기준을 맞춰라!
 
@@ -401,11 +383,7 @@ plt.ylabel('weight')
 plt.show()
 ```
 
-<<<<<<< HEAD
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a0a78814-f7bb-4b36-9830-783eb29a8930/27462a39-b5bc-4116-980e-1da47e5561b7/Untitled.png)
-=======
 <img src="../assets/images/learn/3-6.png" />
->>>>>>> 48720f402805ae5466af7e330e4748e10d8d6dfd
 
 ```python
 train_target[indexes]
@@ -467,11 +445,7 @@ plt.ylabel('weight')
 plt.show()
 ```
 
-<<<<<<< HEAD
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a0a78814-f7bb-4b36-9830-783eb29a8930/8d62228e-610b-4c0a-95f9-c7d68dc69ee9/Untitled.png)
-=======
 <img src="../assets/images/learn/3-7.png" />
->>>>>>> 48720f402805ae5466af7e330e4748e10d8d6dfd
 
 그 후 사이킷런의 train_test_split() 함수를 사용해 훈련 세트와 테스트 세트로 나눈다.  여기서 **사이킷런의 훈련세트는  2차원 배열이어야 하므로 1차원 배열을 1개의 열이 있는 2차원 배열로 바꾸어야 한다.**
 
@@ -520,11 +494,7 @@ knr.score(test_input, test_target)
 
 그런데 score로 나온 이 점수는 무엇일까? 분류의 경우는 테스트 세트에 있는 샘플을 정확하게 분류한 개수의 비율을 score로 나타내었다. 회귀에서는 예측 값이나 타깃 모두 임의의 수치이기 때문에 정확한 숫자를 맞춘다는것은 거의 불가능에 가깝다. 그래서 회귀에 경우 조금 다른 값으로 평가하는데 이 점수를 **결정계수(R^2)**라고 한다.
 
-<<<<<<< HEAD
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a0a78814-f7bb-4b36-9830-783eb29a8930/20f26e3d-f70e-4f26-ad93-94e91adf60f1/Untitled.png)
-=======
 <img src="../assets/images/learn/3-8.png" />
->>>>>>> 48720f402805ae5466af7e330e4748e10d8d6dfd
 
 결정 계수의 값은 해당 공식으로 나타나는데, 만약 **타겟의 평균 정도를 예측하는 수준이라면 (즉 분자와 분모가 비슷해져) R^2는 0에 가까워 지고, 예측이 타겟에 아주 가까워지면 (분자가 0에 가까워지기 떄문에) 1에 가까운 값이 된다.** 사이킷런에서 score() 메소드의 값은 높을수록 좋으므로 0.99이면 아주 좋은 결과 값이다. 하지만 정확도처럼 R^2가 직감적으로 얼마나 좋은지 이해하기는 어렵다.
 
@@ -608,19 +578,6 @@ for n in (1, 3, 5, 10, 30, 40) :
   print(knr.score(test_input, test_target))
 ```
 
-<<<<<<< HEAD
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a0a78814-f7bb-4b36-9830-783eb29a8930/d6f45386-5bc4-4799-b7f7-fe3b5804bab2/Untitled.png)
-
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a0a78814-f7bb-4b36-9830-783eb29a8930/c25fa1da-4d60-4daf-8407-5aaef5f646cb/Untitled.png)
-
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a0a78814-f7bb-4b36-9830-783eb29a8930/830813a0-e882-4486-8a1c-4667276b2fed/Untitled.png)
-
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a0a78814-f7bb-4b36-9830-783eb29a8930/ed5b69bb-c0fe-423d-9a79-d6a81a0e7ebe/Untitled.png)
-
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a0a78814-f7bb-4b36-9830-783eb29a8930/bfae8d3a-8fe5-43b9-9237-036a6854f2b0/Untitled.png)
-
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/a0a78814-f7bb-4b36-9830-783eb29a8930/f8eda183-fdd4-4048-98c1-9ce1a5e49e3f/Untitled.png)
-=======
 <img src="../assets/images/learn/3-9.png" />
 
 <img src="../assets/images/learn/3-10.png" />
@@ -632,4 +589,3 @@ for n in (1, 3, 5, 10, 30, 40) :
 <img src="../assets/images/learn/3-13.png" />
 
 <img src="../assets/images/learn/3-14.png" />
->>>>>>> 48720f402805ae5466af7e330e4748e10d8d6dfd
